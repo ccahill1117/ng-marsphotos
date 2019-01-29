@@ -15,6 +15,7 @@ import { AlbumDetailComponent } from './album-detail/album-detail.component';
 import { masterFirebaseConfig } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AdminComponent } from './admin/admin.component';
 
 
 export const firebaseConfig = {
@@ -31,7 +32,8 @@ export const firebaseConfig = {
     // AlbumsComponent,
     AboutComponent,
     WelcomeComponent,
-    AlbumDetailComponent
+    AlbumDetailComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
