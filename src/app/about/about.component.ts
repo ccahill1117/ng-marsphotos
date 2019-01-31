@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-about',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent {
+  private user;
 
+  constructor() {}
+
+  ngDoCheck() {
+    this.user = firebase.auth().currentUser;
+  }
 }

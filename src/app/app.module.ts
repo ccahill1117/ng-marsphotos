@@ -22,7 +22,8 @@ import { RoverFormComponent } from './rover-form/rover-form.component';
 import { PhotosListComponent } from './photos-list/photos-list.component';
 import { UserPhotosListComponent } from './user-photos-list/user-photos-list.component';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
+import { AuthGuardService } from './auth-guard.service';
+import { AuthenticationService } from './authentication.service'
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -59,7 +60,7 @@ export const nasaConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
   ],
-  providers: [],
+  providers: [AuthGuardService,AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhotoService } from '../photo.service';
 import { Photo } from '../photo.model';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-user-photos-list',
@@ -11,6 +12,10 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 })
 
 export class UserPhotosListComponent implements OnInit {
+  private user;
+  ngDoCheck() {
+    this.user = firebase.auth().currentUser;
+  }
   constructor(private photoService: PhotoService) { }
   savedPhotos: FirebaseListObservable <any[]> = null;
   ngOnInit(){

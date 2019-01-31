@@ -1,3 +1,11 @@
 .photoListWrapper {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
+}
+
+.marsPic {
+  display: inline-block;
+}
+
+.delButton {
+  display: inline-block;
 }

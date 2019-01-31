@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Album } from '../album.model';
 import { AlbumService } from '../album.service';
 import { FirebaseObjectObservable } from 'angularfire2/database';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-album-detail',
@@ -13,6 +14,8 @@ import { FirebaseObjectObservable } from 'angularfire2/database';
 })
 
 export class AlbumDetailComponent implements OnInit {
+  private user;
+
   albumId: string;
   albumToDisplay;
 
@@ -27,6 +30,10 @@ export class AlbumDetailComponent implements OnInit {
       this.albumId = urlParameters['id']
     });
     this.albumToDisplay = this.albumService.getAlbumById(this.albumId);
+  }
+
+  ngDoCheck() {
+    this.user = firebase.auth().currentUser;
   }
 
 }

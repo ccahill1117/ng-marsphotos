@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable'
 import { MarsRoverApiPhotosService } from '../mars-rover-api-photos.service'
 import { PhotoService } from '../photo.service';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-rover-form',
@@ -10,6 +11,11 @@ import { PhotoService } from '../photo.service';
   providers: [ MarsRoverApiPhotosService, PhotoService ]
 })
 export class RoverFormComponent implements OnInit {
+  private user;
+  ngDoCheck() {
+    this.user = firebase.auth().currentUser;
+  }
+
   photos: any[] = null;
 
   constructor(private marsRoverApiPhotosService: MarsRoverApiPhotosService) { }

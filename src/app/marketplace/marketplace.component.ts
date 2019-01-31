@@ -3,6 +3,7 @@ import { Album } from '../album.model';
 import { Router } from '@angular/router';
 import { AlbumService } from '../album.service';
 import { FirebaseListObservable } from 'angularfire2/database';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-marketplace',
@@ -12,6 +13,7 @@ import { FirebaseListObservable } from 'angularfire2/database';
 })
 
 export class MarketplaceComponent implements OnInit {
+  private user;
   albums: FirebaseListObservable<any[]>;
     currentRoute: string = this.router.url;
 
@@ -25,4 +27,8 @@ export class MarketplaceComponent implements OnInit {
   goToDetailPage(clickedAlbum) {
     this.router.navigate(['albums', clickedAlbum.$key]);
   };
+
+  ngDoCheck() {
+    this.user = firebase.auth().currentUser;
+  }
 }

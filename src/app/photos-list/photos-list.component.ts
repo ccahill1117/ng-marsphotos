@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PhotoService } from '../photo.service';
 import { Photo } from '../photo.model';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-photos-list',
@@ -9,6 +10,10 @@ import { Photo } from '../photo.model';
   providers: [ PhotoService ]
 })
 export class PhotosListComponent implements OnInit {
+  private user;
+  ngDoCheck() {
+    this.user = firebase.auth().currentUser;
+  }
   @Input() childPhotos;
 
   constructor(private photoService: PhotoService) { }
@@ -18,7 +23,7 @@ export class PhotosListComponent implements OnInit {
     this.photoService.addPhoto(newPhoto);
     alert('This image has been added to your list of saved images.');
   }
-  
+
   ngOnInit() {
   }
 

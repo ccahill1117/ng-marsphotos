@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-albums',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./albums.component.css']
 })
 export class AlbumsComponent implements OnInit {
+  private user;
 
-  constructor() { }
+  constructor() {}
+
+  ngDoCheck() {
+    this.user = firebase.auth().currentUser;
+  }
 
   ngOnInit() {
   }

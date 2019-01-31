@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AlbumService } from '../album.service';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-edit-album',
@@ -9,6 +10,12 @@ import { AlbumService } from '../album.service';
 })
 export class EditAlbumComponent implements OnInit {
   @Input() selectedAlbum;
+
+  private user;
+
+  ngDoCheck() {
+    this.user = firebase.auth().currentUser;
+  }
 
   constructor(private albumService: AlbumService) { }
 
