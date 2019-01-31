@@ -13,10 +13,13 @@ import { HttpModule } from '@angular/http';
 import { AlbumDetailComponent } from './album-detail/album-detail.component';
 
 import { masterFirebaseConfig } from './api-keys';
+import { nasaKey } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AdminComponent } from './admin/admin.component';
 import { EditAlbumComponent } from './edit-album/edit-album.component';
+import { RoverFormComponent } from './rover-form/rover-form.component';
+import { PhotosListComponent } from './photos-list/photos-list.component';
 
 
 export const firebaseConfig = {
@@ -25,6 +28,10 @@ export const firebaseConfig = {
   databaseURL: masterFirebaseConfig.databaseURL,
   storageBucket: masterFirebaseConfig.storageBucket
 };
+
+export const nasaConfig = {
+  nasa: nasaKey.nasa,
+}
 
 @NgModule({
   declarations: [
@@ -35,7 +42,9 @@ export const firebaseConfig = {
     WelcomeComponent,
     AlbumDetailComponent,
     AdminComponent,
-    EditAlbumComponent
+    EditAlbumComponent,
+    RoverFormComponent,
+    PhotosListComponent
   ],
   imports: [
     BrowserModule,
