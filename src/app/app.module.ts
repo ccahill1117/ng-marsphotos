@@ -21,13 +21,15 @@ import { EditAlbumComponent } from './edit-album/edit-album.component';
 import { RoverFormComponent } from './rover-form/rover-form.component';
 import { PhotosListComponent } from './photos-list/photos-list.component';
 import { UserPhotosListComponent } from './user-photos-list/user-photos-list.component';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
   authDomain: masterFirebaseConfig.authDomain,
   databaseURL: masterFirebaseConfig.databaseURL,
-  storageBucket: masterFirebaseConfig.storageBucket
+  storageBucket: masterFirebaseConfig.storageBucket,
+  messagingSenderId: masterFirebaseConfig.messagingSenderId
 };
 
 export const nasaConfig = {
@@ -54,7 +56,8 @@ export const nasaConfig = {
     HttpModule,
     routing,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
